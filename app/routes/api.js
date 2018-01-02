@@ -63,9 +63,9 @@ module.exports = function(router){
           if(err) throw err;
           if(!contact)
           {
-            var contact = new Contact();
-            contact.contactType = selectContact;
-            contact.save(function(err){
+            var con = new Contact();
+            con.contactType = selectContact;
+            con.save(function(err){
               if(err) console.log('Could not save contact data');
             });
           }
@@ -79,9 +79,9 @@ module.exports = function(router){
           if(err) throw err;
           if(!skill)
           {
-            var skill = new Skill();
-            skill.skillType = selectSkill;
-            skill.save(function(err){
+            var sk = new Skill();
+            sk.skillType = selectSkill;
+            sk.save(function(err){
               if(err) console.log('Could not save skill data');
             });
           }

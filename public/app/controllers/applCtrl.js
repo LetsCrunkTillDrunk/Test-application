@@ -8,6 +8,7 @@ angular.module('applicationControllers', ['subServices'])
   app.pages=[];
     function getApplicants()
     {
+        app.applicantsList = [];
         Applicant.getAllApplicants().then(function(data){
         app.errorMsg = false;
         app.successMsg = false;
