@@ -21,7 +21,7 @@ mongoose.Promise = global.Promise;
 //mongodb://<dbuser>:<dbpassword>@ds239097.mlab.com:39097/human-resource
 //mongodb://localhost:27017/humar-resources
 //var url = "mongodb://localhost:27017/humar-resources";
-var url = "mongodb://Kimiko:999999@ds239097.mLab.com:39097/human-resource";
+//var url = "mongodb://Kimiko:999999@ds239097.mLab.com:39097/human-resource";
 // mongoose.connect('mongodb://localhost:27017/humar-resources', { useMongoClient:true }, function(err)
 // {
 // if(err)
@@ -30,11 +30,18 @@ var url = "mongodb://Kimiko:999999@ds239097.mLab.com:39097/human-resource";
 //   console.log('Successfully connected');
 // }
 // });
-
-MongoClient.connect(url, function(err, db){
-  if(err) console.log("Error is " + err);
-  else console.log("Connection established to " + url);
+mongoose.connect('mongodb://Kimiko:999999@ds239097.mLab.com:39097/human-resource', { useMongoClient:true }, function(err)
+{
+if(err)
+  console.log('Not connected to database: ' + err);
+else {
+  console.log('Successfully connected');
+}
 });
+// MongoClient.connect(url, function(err, db){
+//   if(err) console.log("Error is " + err);
+//   else console.log("Connection established to " + url);
+// });
 
 
 app.get('*', function(req,res){
