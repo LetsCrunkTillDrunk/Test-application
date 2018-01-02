@@ -1,0 +1,90 @@
+<div class="page-header">
+  <h1>Edit user application</h1>
+</div>
+<form ng-submit="edit.editUser(editData);">
+  <label for="firstname">First Name:</label>
+  <input class="form-control" type="text" id="firstname" name="firstname" placeholder="John" ng-model="edit.editData.firstname" value ="{{edit.editData.firstname}}">
+  <br>
+  <label for="lastname">Password:</label>
+  <input class="form-control" type="text" id="lastname" name="last" placeholder="Doe" ng-model="edit.editData.lastname" value="{{edit.editData.lastname}}">
+  <br>
+  <br>
+  <label>Contact Info:</label>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <input list="contacts" class="form-control" ng-model="edit.editData.conData.contactType" placeholder="Contact Type">
+      <datalist id="contacts">
+        <option ng-repeat = "contact in edit.contactListStart" value="{{contact}}">
+      </datalist>
+    </div>
+    <div class="col-md-6">
+      <input class="form-control" type="text" id="contactValue" placeholder="Contact Data" ng-model="edit.edit.conData.contactValue">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary" type="button" ng-click="edit.addNewContact()">Add Contact</button>
+    </div>
+  </div>
+  <br>
+  <div ng-show="edit.isAddedContact">
+    <table class="table">
+      <tr>
+        <div class="row">
+        <th class="col-md-5">Contact Type:</th>
+        <th class="col-md-5">Contact Value:</th>
+        <th class="col-md-2"></th>
+        </div>
+      </tr>
+      <tr ng-repeat="contact in edit.contactList">
+        <td>{{contact.type}}</td>
+        <td>{{contact.value}}</td>
+        <td><button class="btn btn-danger" type="button" ng-click="edit.deleteContact(contact.id)">Delete Contact</button></td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <label>Skills Info:</label>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <input list="skills" class="form-control" ng-model="edit.editData.skillData.skillType" placeholder="Skill Type">
+      <datalist id="skills">
+        <option ng-repeat = "skill in edit.skillListStart" value="{{skill}}">
+      </datalist>
+    </div>
+    <div class="col-md-2">
+      <input class="form-control" type="number" min ="1" max="10" id="skillValue" placeholder="Skill Value" ng-model="edit.editData.skillData.skillValue">
+    </div>
+    <div class="col-md-offset-4 col-md-2">
+      <button class="btn btn-primary" type="button" ng-click="edit.addNewSkill()">Add Skill</button>
+    </div>
+  </div>
+  <br>
+  <div ng-show="edit.isAddedSkill">
+    <table class="table">
+      <tr>
+      <div class="row">
+        <th class = "col-md-5">Skill Type:</th>
+        <th class = "col-md-5">Skill Value:</th>
+        <th class = "col-md-2"></th>
+      </div>
+      </tr>
+      <tr ng-repeat="skill in edit.skillList">
+        <td>{{skill.type}}</td>
+        <td>{{skill.value}}</td>
+        <td><button class="btn btn-danger" type="button" ng-click="edit.deleteSkill(skill.id)">Delete Skill</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Edit</button>
+</form>
+<br>
+
+<div class="row show-hide-message" ng-show="edit.errorMsg">
+  <div class="alert alert-danger">{{edit.errorMsg}}</div>
+</div>
+
+<div class="row show-hide-message" ng-show="edit.successMsg">
+  <div class="alert alert-success">{{edit.successMsg}}</div>
+</div>

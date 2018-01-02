@@ -1,0 +1,89 @@
+<div class="page-header">
+  <h1>Submit an application</h1>
+</div>
+<form ng-submit="submit.submitUser(subData);">
+  <label for="firstname">First Name:</label>
+  <input class="form-control" type="text" id="firstname" name="firstname" placeholder="John" ng-model="submit.subData.firstname">
+  <br>
+  <label for="lastname">Last Name:</label>
+  <input class="form-control" type="text" id="lastname" name="last" placeholder="Doe" ng-model="submit.subData.lastname">
+  <br>
+  <label>Contact Info:</label>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <input list="contacts" class="form-control" ng-model="submit.subData.conData.contactType" placeholder="Contact Type">
+      <datalist id="contacts">
+        <option ng-repeat = "contact in submit.contactListStart" value="{{contact}}">
+      </datalist>
+    </div>
+    <div class="col-md-6">
+      <input class="form-control" type="text" id="contactValue" placeholder="Contact Data" ng-model="submit.subData.conData.contactValue">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary" type="button" ng-click="submit.addNewContact()">Add Contact</button>
+    </div>
+  </div>
+  <br>
+  <div ng-show="submit.isAddedContact">
+    <table class="table">
+      <tr>
+        <div class="row">
+        <th class="col-md-5">Contact Type:</th>
+        <th class="col-md-5">Contact Value:</th>
+        <th class="col-md-2"></th>
+        </div>
+      </tr>
+      <tr ng-repeat="contact in submit.contactList">
+        <td>{{contact.type}}</td>
+        <td>{{contact.value}}</td>
+        <td><button class="btn btn-danger" type="button" ng-click="submit.deleteContact(contact.id)">Delete Contact</button></td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <label>Skills Info:</label>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <input list="skills" class="form-control" ng-model="submit.subData.skillData.skillType" placeholder="Skill Type">
+      <datalist id="skills">
+        <option ng-repeat = "skill in submit.skillListStart" value="{{skill}}">
+      </datalist>
+    </div>
+    <div class="col-md-2">
+      <input class="form-control" type="number" min ="1" max="10" id="skillValue" placeholder="Skill Value" ng-model="submit.subData.skillData.skillValue">
+    </div>
+    <div class="col-md-offset-4 col-md-2">
+      <button class="btn btn-primary" type="button" ng-click="submit.addNewSkill()">Add Skill</button>
+    </div>
+  </div>
+  <br>
+  <div ng-show="submit.isAddedSkill">
+    <table class="table">
+      <tr>
+      <div class="row">
+        <th class = "col-md-5">Skill Type:</th>
+        <th class = "col-md-5">Skill Value:</th>
+        <th class = "col-md-2"></th>
+      </div>
+      </tr>
+      <tr ng-repeat="skill in submit.skillList">
+        <td>{{skill.type}}</td>
+        <td>{{skill.value}}</td>
+        <td><button class="btn btn-danger" type="button" ng-click="submit.deleteSkill(skill.id)">Delete Skill</button></td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <button class="btn btn-primary" type="submit">Submit</button>
+
+</form>
+<br>
+<div class="row show-hide-message" ng-show="submit.errorMsg">
+  <div class="alert alert-danger">{{submit.errorMsg}}</div>
+</div>
+
+<div class="row show-hide-message" ng-show="submit.successMsg">
+  <div class="alert alert-success">{{submit.successMsg}}</div>
+</div>

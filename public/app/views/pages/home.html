@@ -1,0 +1,59 @@
+  <form ng-submit ="applicant.searchApplicants()">
+    <div class="row">
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="search" name="search" placeholder="Search" >
+      </div>
+      <div class="col-md-1">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <div class="panel panel-primary" onload="applicant.getAll()">
+  <div class="panel-heading">
+    <strong>List of applicants</strong>
+  </div>
+  <table class="table frontTable">
+    <tr class="tableRow">
+      <div class="row">
+        <th class="col-md-3"><a href="#" ng-click="applicant.sortByName()">Name <span class="glyphicon glyphicon-sort"></span></a></th>
+        <th class="col-md-3"><a href="#" ng-click="applicant.sortByDate()">Date <span class="glyphicon glyphicon-sort"></span></a></th>
+        <th class="col-md-3">Top three skills</th>
+      </div>
+    </tr>
+    <tr class="tableRow" ng-repeat="appl in applicant.applicantsList track by $index">
+      <div class="row">
+        <td class="col-md-3">{{appl.firstname}}  {{appl.lastname}}</td>
+        <td class="col-md-3">{{appl.placeDate | date}}</td>
+        <td class="col-md-3">
+          <ol class="frontPageSkillList">
+            <li ng-repeat="skill in appl.skills">
+              {{skill.skillType}} : {{skill.skillValue}}
+            </li>
+          </ol>
+        </td>
+        <td class="col-md-3" ng-show="!appl.show">
+            <a href="/edit/{{appl._id}}"><button type="button" class="btn btn-primary">Edit</button></a>
+            <button ng-click="applicant.deleteApplicant(appl._id)" type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </div>
+    </tr>
+  </table>
+</div>
+
+<div class="pager">
+    <ul>
+        <li id="page_num" ng-repeat="page in applicant.pages">
+            <a href="#" ng-click="applicant.pageChange(page)">{{page + 1}}</a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="row show-hide-message" ng-show="applicant.errorMsg">
+  <div class="alert alert-danger">{{applicant.errorMsg}}</div>
+</div>
+
+<div class="row show-hide-message" ng-show="applicant.successMsg">
+  <div class="alert alert-success">{{applicant.successMsg}}</div>
+</div>
