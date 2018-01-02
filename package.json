@@ -10,7 +10,7 @@
   "author": "Ihor Serbinov",
   "license": "ISC",
   "engines": {
-	"node":"6.6.1",
+	"node":"6.11.1",
 	"npm":"8.9.1"
   },
   "dependencies": {
