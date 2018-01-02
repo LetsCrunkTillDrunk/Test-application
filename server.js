@@ -22,7 +22,7 @@ mongoose.Promise = global.Promise;
 //mongodb://localhost:27017/humar-resources
 //var url = "mongodb://localhost:27017/humar-resources";
 var url = "mongodb://Kimiko:999999@ds239097.mLab.com:39097/human-resource";
-// mongoose.connect('mongodb://Mediff:17q46z5w@ds239097.mLab.com:39097/human-resource', { useMongoClient:true }, function(err)
+// mongoose.connect('mongodb://localhost:27017/humar-resources', { useMongoClient:true }, function(err)
 // {
 // if(err)
 //   console.log('Not connected to database: ' + err);

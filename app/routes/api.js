@@ -12,6 +12,8 @@ module.exports = function(router){
     user.username = req.body.username;
     user.password = req.body.password;
     user.email = req.body.email;
+    console.log(user.username);
+    console.log(user.password);
     if(user.username == null || user.username==""||user.password == null || user.password==""||user.email == null||user.email =="")
     {
         res.json({success: false, message:'Check that all data were provided'});
