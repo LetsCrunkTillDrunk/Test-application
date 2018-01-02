@@ -10,8 +10,8 @@
   "author": "Ihor Serbinov",
   "license": "ISC",
   "engines": {
-	"node":"^5.5.1",
-	"npm":"^8.9.1"
+	"node":"6.6.1",
+	"npm":"8.9.1"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
